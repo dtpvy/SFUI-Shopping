@@ -1,0 +1,7 @@
+src/tests
+node_modules
+build
+dist
+dist-ssr
+.vscode
+public
