@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start:server": "npx json-server --watch src/mock-data/db.json --port 3001"
   },
   "dependencies": {
     "@tabler/icons-react": "^3.26.0",
