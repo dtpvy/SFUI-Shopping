@@ -6,7 +6,7 @@ import { type Product } from "@/types/product";
 import { createSelectors } from "./createSelector";
 
 export type CartItem = {
-  id: number;
+  id: string;
   product: Product;
   quantity: number;
   selected?: boolean;
@@ -16,11 +16,11 @@ type CartState = {
   cart: CartItem[];
   addToCart: (item: CartItem) => void;
   updateCart: (
-    id: number,
+    id: string,
     update: { selected?: boolean; quantity?: number },
   ) => void;
   updateAllCart: (newCart: CartItem[]) => void;
-  removeFromCart: (id: number) => void;
+  removeFromCart: (id: string) => void;
   loadCart: () => void;
   order: (order: Omit<Order, "id">) => string;
 };

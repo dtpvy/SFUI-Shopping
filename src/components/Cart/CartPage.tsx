@@ -34,7 +34,7 @@ const CartPage = () => {
   }, [cart]);
 
   const handleUpdateCart = (
-    id: number,
+    id: string,
     update: { selected?: boolean; quanlity?: number },
   ) => {
     updateCart(id, update);
