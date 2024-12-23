@@ -96,9 +96,6 @@ project-root/
 
 ## Feature Supported
 
-Here are the links in markdown format:
-
-
 **Page Supported**: 
 - [Home](https://sfui-shopping-website.onrender.com)
 - [Search](https://sfui-shopping-website.onrender.com/search)
@@ -108,11 +105,11 @@ Here are the links in markdown format:
 - [Checkout](https://sfui-shopping-website.onrender.com/checkout)
 - [Order Detail](https://sfui-shopping-website.onrender.com/orders/:id)
 
-1. Filter and pagination products
-2. Product detail
-3. Add products to card
-4. Checkout with mock payment
-5. Order list and order detail
+**1. Filter and pagination products**
+**2. Product detail**
+**3. Add products to card**
+**4. Checkout with mock payment**
+**5. Order list and order detail**
 
 ## Planned Features
 1. Internationalization (i18n) support.
