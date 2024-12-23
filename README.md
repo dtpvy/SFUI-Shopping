@@ -35,7 +35,8 @@ npm run dev
 To create a production build, run:
 
 ```bash
-npm run build
+npm run build:dev
+npm run build:prod
 ```
 
 #### Preview the Production Build
@@ -43,7 +44,7 @@ npm run build
 To preview the production build locally, run:
 
 ```bash
-npm run preview
+npm run start
 ```
 
 ### Build and Run the Docker Container
