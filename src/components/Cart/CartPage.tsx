@@ -81,7 +81,7 @@ const CartPage = () => {
               >
                 <div className="flex items-center w-[50px]">
                   <SfCheckbox
-                    checked={item.selected}
+                    checked={item.selected || false}
                     onChange={() =>
                       handleUpdateCart(item.id, { selected: !item.selected })
                     }
@@ -132,7 +132,11 @@ const CartPage = () => {
             </div>
           </div>
           <Link to="/checkout" className="ml-auto">
-            <SfButton size="lg" className="w-[200px] !font-bold">
+            <SfButton
+              disabled={!cart.length}
+              size="lg"
+              className="w-[200px] !font-bold"
+            >
               Check Out
             </SfButton>
           </Link>

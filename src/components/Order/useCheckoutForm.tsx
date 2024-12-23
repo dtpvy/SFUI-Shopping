@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import useCartStore from "@/store/cart";
+import { type Order } from "@/types/order";
 
 export type CheckoutFormType = {
   firstName: string;
@@ -33,6 +34,7 @@ export const useCheckoutForm = ({
   const [error, setError] = useState({});
   const [isError, setIsError] = useState(false);
   const order = useCartStore.use.order();
+  const getState = useCartStore.getState;
   const navigate = useNavigate();
 
   const onChange = (newState: CheckoutFormType) => {
@@ -46,7 +48,7 @@ export const useCheckoutForm = ({
     }));
   };
 
-  const onSubmit = () => {
+  const onSubmit = (orderInfo: Omit<Order, "id" | "info" | "items">) => {
     const error: Record<string, string> = {};
     let isError = false;
     Object.keys(state).forEach((key) => {
@@ -64,8 +66,15 @@ export const useCheckoutForm = ({
     setError(error);
     setIsError(isError);
     if (isError) return;
-    order();
-    navigate("/review-page");
+    const cart = getState().cart;
+    const orderItem = cart.filter((item) => !!item.selected);
+    const { ...info } = state as CheckoutFormType;
+    const orderId = order({
+      items: orderItem,
+      info,
+      ...orderInfo,
+    });
+    navigate(`/review-page?order=${orderId}`);
   };
 
   return {

@@ -117,7 +117,7 @@ export const getProductById = async (id: string) => {
     const res = await apiGet<null, DataResponse<Product[]>>(
       `${BASE_URL}/products`,
     );
-    return res.data.find((item) => item.id === +id);
+    return res.data.find((item) => item.id === id);
   } catch {
     return null;
   }

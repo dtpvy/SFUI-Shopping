@@ -19,8 +19,6 @@ const CartReview = () => {
     return cart.slice(0, 4);
   }, [cart]);
 
-  if (!viewCart.length) return;
-
   return (
     <div className="bg-white shadow-lg relative flex flex-col gap-3 border border-neutral-200 hover:shadow-lg w-[400px] p-4">
       {viewCart.map((item) => {

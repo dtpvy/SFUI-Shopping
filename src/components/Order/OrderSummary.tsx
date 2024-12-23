@@ -8,14 +8,15 @@ import {
   SfLink,
 } from "@storefront-ui/react";
 
-import { CartItem } from "@/store/cart";
+import { type CartItem } from "@/store/cart";
+import { type Order } from "@/types/order";
 
 const DISCOUNT_CODE = "DISCOUNT100";
 const DELIVERY_PRICE = 10;
 
 type Props = {
   order: CartItem[];
-  onSubmit: () => void;
+  onSubmit: (orderInfo: Omit<Order, "id" | "info" | "items">) => void;
 };
 
 const OrderSummary = ({ order, onSubmit }: Props) => {
@@ -92,6 +93,17 @@ const OrderSummary = ({ order, onSubmit }: Props) => {
     setInformationAlert(true);
   };
 
+  const handleOrder = () => {
+    onSubmit({
+      saving: 0,
+      originalPrice,
+      promte: promoCode,
+      subTotal: subTotalPrice,
+      delivery: DELIVERY_PRICE,
+      summary: Math.max(subTotalPrice + promoCode, 0),
+    });
+  };
+
   return (
     <div>
       <div className="md:shadow-lg md:rounded-md md:border md:border-neutral-100">
@@ -158,9 +170,9 @@ const OrderSummary = ({ order, onSubmit }: Props) => {
           </p>
           <div className="flex justify-between typography-headline-4 md:typography-headline-3 font-bold pb-4 mb-4 border-b border-neutral-200">
             <p>Total</p>
-            <p>{formatPrice(subTotalPrice + promoCode)}</p>
+            <p>{formatPrice(Math.max(subTotalPrice + promoCode, 0))}</p>
           </div>
-          <SfButton onClick={onSubmit} size="lg" className="w-full">
+          <SfButton onClick={handleOrder} size="lg" className="w-full">
             Submit
           </SfButton>
           <div className="typography-text-sm mt-4 text-center">

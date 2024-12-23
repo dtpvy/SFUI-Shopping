@@ -7,7 +7,7 @@ import {
   SfIconShoppingCart,
   useDisclosure,
 } from "@storefront-ui/react";
-import { IconUser } from "@tabler/icons-react";
+import { IconReceiptFilled, IconUser } from "@tabler/icons-react";
 import { Link } from "react-router-dom";
 
 import reactLogo from "@/assets/react.svg";
@@ -41,6 +41,9 @@ function Header() {
       </div>
       <div className="flex gap-8 items-center flex-1 justify-end">
         <IconUser />
+        <Link to="/orders">
+          <IconReceiptFilled color="green" />
+        </Link>
         <SfDropdown
           trigger={
             <SfButton

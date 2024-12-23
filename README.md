@@ -62,3 +62,48 @@ docker run -p 3000:3000 -p 3001:3001 sfui-shopping
 
 Your application will be available at `http://localhost:3000`.
 
+## Project Structure
+```
+project-root/
+├── src/
+│   ├── components/     # Reusable React components and pages
+│   ├── hooks/          # Custom React hooks
+│   ├── store/          # State management using Zustand
+│   ├── utils/          # Utility functions and helpers
+│   ├── mock-data/      # Mock data for JSON server
+│   ├── index.css       # Global css & tailwindcss
+│   └── main.tsx        # Main application component & routing
+├── public/             # Static assets
+├── tests/              # Unit and integration tests
+├── package.json        # Dependencies and scripts
+├── vite.config.ts      # Vite configuration
+└── README.md           # Documentation
+```
+
+## Libraries and Frameworks
+- **React**: Front-end framework for building UI.
+- **TypeScript**: Static typing for JavaScript.
+- **Vite**: Fast development build tool.
+- **Zustand**: State management library.
+- **JSON Server**: Mock data server for API simulation.
+- **Jest**: For unit and integration testing.
+
+## Technical Supported
+1. State management with Zustand.
+2. Mock API integration using JSON Server.
+3. TypeScript support for improved development.
+
+## Feature Supported
+1. Filter and pagination products
+2. Product detail
+3. Add products to card
+4. Checkout with mock payment
+5. Order list and order detail
+
+## Planned Features
+1. Internationalization (i18n) support.
+2. Authentication and user management.
+3. Integration with a real backend API and real payment system.
+4. Enhanced testing coverage.
+5. Responsive design improvements.
+

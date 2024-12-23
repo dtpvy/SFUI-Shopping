@@ -10,7 +10,12 @@ import classNames from "classnames";
 
 import { searchProducts } from "@/apis/product";
 
-function ButtonPrev({ disabled, ...attributes }: { disabled?: boolean }) {
+function ButtonPrev({
+  disabled = false,
+  ...attributes
+}: {
+  disabled?: boolean;
+}) {
   return (
     <SfButton
       className={classNames(
@@ -29,9 +34,12 @@ function ButtonPrev({ disabled, ...attributes }: { disabled?: boolean }) {
   );
 }
 
-ButtonPrev.defaultProps = { disabled: false };
-
-function ButtonNext({ disabled, ...attributes }: { disabled?: boolean }) {
+function ButtonNext({
+  disabled = false,
+  ...attributes
+}: {
+  disabled?: boolean;
+}) {
   return (
     <SfButton
       className={classNames(
@@ -49,8 +57,6 @@ function ButtonNext({ disabled, ...attributes }: { disabled?: boolean }) {
     </SfButton>
   );
 }
-
-ButtonNext.defaultProps = { disabled: false };
 
 type Props = {
   category: string | null;

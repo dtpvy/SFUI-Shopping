@@ -1,5 +1,6 @@
 import { create } from "zustand";
 
+import { type Order } from "@/types/order";
 import { type Product } from "@/types/product";
 
 import { createSelectors } from "./createSelector";
@@ -21,7 +22,7 @@ type CartState = {
   updateAllCart: (newCart: CartItem[]) => void;
   removeFromCart: (id: number) => void;
   loadCart: () => void;
-  order: () => void;
+  order: (order: Omit<Order, "id">) => string;
 };
 
 const saveCartToLocalStorage = (cart: CartItem[]) => {
@@ -34,7 +35,7 @@ const getCartFromLocalStorage = (): CartItem[] => {
 };
 
 const useCartStore = createSelectors(
-  create<CartState>((set, get) => ({
+  create<CartState>((set) => ({
     cart: getCartFromLocalStorage(),
     addToCart: (item) =>
       set((state) => {
@@ -75,15 +76,15 @@ const useCartStore = createSelectors(
         saveCartToLocalStorage(updatedCart);
         return { cart: updatedCart };
       }),
-    order: () => {
-      const cart = get().cart;
-      const order = cart.filter((item) => !!item.selected);
-      localStorage.setItem("order", JSON.stringify(order));
+    order: (order) => {
+      const id = new Date().getTime();
+      localStorage.setItem(`order_${id}`, JSON.stringify({ id, ...order }));
       set((state) => {
         const updatedCart = state.cart.filter((cartItem) => !cartItem.selected);
         saveCartToLocalStorage(updatedCart);
         return { cart: updatedCart };
       });
+      return `${id}`;
     },
 
     loadCart: () =>
