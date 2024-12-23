@@ -95,6 +95,19 @@ project-root/
 3. TypeScript support for improved development.
 
 ## Feature Supported
+
+Here are the links in markdown format:
+
+
+**Page Supported**: 
+- [Home](https://sfui-shopping-website.onrender.com)
+- [Search](https://sfui-shopping-website.onrender.com/search)
+- [Product detail](https://sfui-shopping-website.onrender.com/products/:id)
+- [Cart](https://sfui-shopping-website.onrender.com/cart)
+- [Order](https://sfui-shopping-website.onrender.com/orders)
+- [Checkout](https://sfui-shopping-website.onrender.com/checkout)
+- [Order Detail](https://sfui-shopping-website.onrender.com/orders/:id)
+
 1. Filter and pagination products
 2. Product detail
 3. Add products to card
@@ -108,3 +121,24 @@ project-root/
 4. Enhanced testing coverage.
 5. Responsive design improvements.
 
+## Deployment Guide
+
+### Deploying on Render
+I deploy both the React application and the JSON Server to Render using the following steps:
+
+#### **Step 1: Deploy JSON Server**
+1. Push your project to a GitHub repository.
+2. Go to [Render](https://render.com/) and create a new **Web Service**.
+3. Configure the service:
+   - **Environment**: Select `Node`.
+   - **Build Command**: `npm install`
+   - **Start Command**: `npx json-server --watch src/mock-data/db.json --port 10000`
+4. Deploy the service and note the URL (e.g., `https://sfui-shopping.onrender.com`).
+
+#### **Step 2: Deploy React Application**
+1. Push the project to your GitHub/GitLab repository.
+2. Go to [Render](https://render.com/) and create a new **Static Site**.
+3. Configure the site:
+   - **Build Command**: `npm install; npm run build:prod`
+   - **Publish Directory**: `dist`
+4. Deploy the site and note the URL (e.g., `https://sfui-shopping-website.onrender.com`).
